@@ -1,0 +1,37 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/noteListFragment">
+
+    <!-- Фрагмент списка заметок -->
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="ru.redfox.rnotes.NoteListFragment"
+        android:label="Note List"
+        tools:layout="@layout/fragment_note_list" >
+
+        <!-- Действие для перехода к фрагменту редактирования -->
+        <action
+            android:id="@+id/action_to_editNoteFragment"
+            app:destination="@id/editNoteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <!-- Фрагмент редактирования заметки -->
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="ru.redfox.rnotes.EditNoteFragment"
+        android:label="Edit Note"
+        tools:layout="@layout/fragment_edit_note" >
+
+        <!-- Аргумент, чтобы передать заметку для редактирования -->
+        <argument
+            android:name="note"
+            app:argType="ru.redfox.rnotes.db.Note"
+            app:nullable="true" />
+    </fragment>
+</navigation>
