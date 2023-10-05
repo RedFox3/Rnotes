@@ -48,6 +48,7 @@ public class NoteListFragment extends Fragment {
         noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         noteViewModel.getAllNotes().observe(getViewLifecycleOwner(), notes -> {
             adapter.setNotes(notes);
+            noteRecyclerView.scheduleLayoutAnimation();
         });
 
         adapter.setOnItemClickListener(note -> {
