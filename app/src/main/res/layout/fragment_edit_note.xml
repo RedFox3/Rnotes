@@ -10,7 +10,7 @@
         android:id="@+id/editTextTitle"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:hint="Title"
+        android:hint="Заголовок заметки"
         android:inputType="text|textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:gravity="top"
-        android:hint="Content"
+        android:hint="Текст заметки"
         android:inputType="text|textCapSentences|textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/buttonSave"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         android:id="@+id/buttonImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add image"
+        android:text="Добавить фото"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -51,7 +51,7 @@
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="Сохранить"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
