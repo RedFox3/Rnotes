@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
+import java.net.URI;
+
 import ru.redfox.rnotes.db.NoteViewModel;
 
 public class NoteListFragment extends Fragment {
@@ -61,7 +64,13 @@ public class NoteListFragment extends Fragment {
             new AlertDialog.Builder(requireContext())
                     .setTitle("Удалить заметку")
                     .setMessage("Вы уверены, что хотите удалить эту заметку?")
-                    .setPositiveButton("Да", (dialog, which) -> noteViewModel.delete(note))
+                    .setPositiveButton("Да", (dialog, which) -> {
+                        if (note.getImageUri() != null) {
+                            File file = new File(URI.create(note.getImageUri().toString()));
+                            file.delete();
+                        }
+                        noteViewModel.delete(note);
+                    })
                     .setNegativeButton("Нет", null)
                     .show();
         });

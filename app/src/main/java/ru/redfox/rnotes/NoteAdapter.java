@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         Note currentNote = notes.get(position);
         holder.textViewTitle.setText(currentNote.getTitle());
         holder.textViewContent.setText(currentNote.getContent());
+        if (currentNote.getImageUri() != null) {
+            holder.imageExist.setVisibility(View.VISIBLE);
+        } else {
+            holder.imageExist.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -64,11 +70,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     class NoteViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
         private TextView textViewContent;
+        private ImageView imageExist;
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             textViewContent = itemView.findViewById(R.id.textViewContent);
+            imageExist = itemView.findViewById(R.id.imageExist);
 
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();

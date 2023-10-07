@@ -1,9 +1,11 @@
 package ru.redfox.rnotes.db;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -14,10 +16,13 @@ public class Note implements Parcelable {
 
     private String title;
     private String content;
+    @Nullable
+    private Uri imageUri;
 
-    public Note(String title, String content) {
+    public Note(String title, String content, @Nullable Uri imageUri) {
         this.title = title;
         this.content = content;
+        this.imageUri = imageUri;
     }
 
     public int getId() {
@@ -44,10 +49,20 @@ public class Note implements Parcelable {
         this.content = content;
     }
 
+    @Nullable
+    public Uri getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(@Nullable Uri imageUri) {
+        this.imageUri = imageUri;
+    }
+
     protected Note(Parcel in) {
         id = in.readInt();
         title = in.readString();
         content = in.readString();
+        imageUri = Uri.parse(in.readString());
     }
 
     @Override
@@ -60,6 +75,8 @@ public class Note implements Parcelable {
         dest.writeInt(id);
         dest.writeString(title);
         dest.writeString(content);
+        if(imageUri != null)
+            dest.writeString(imageUri.toString());
     }
 
     public static final Parcelable.Creator<Note> CREATOR = new Parcelable.Creator<Note>() {
