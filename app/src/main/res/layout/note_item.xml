@@ -27,7 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="16sp"
-            android:text="Note Content" />
+            android:text="Note Content"
+            android:maxLines="2"
+            android:ellipsize="end" />
 
     </LinearLayout>
 

@@ -24,7 +24,9 @@ public abstract class NoteDatabase extends RoomDatabase {
             super.onCreate(db);
             executor.execute(() -> {
                 NoteDao noteDao = instance.noteDao();
-                noteDao.insert(new Note("Test Title", "Test Content"));
+                noteDao.insert(new Note(
+                        "Твоя первая заметка",
+                        "Удерживай, чтобы удалить заметку. Нажми чтобы редактировать."));
             });
         }
     };
